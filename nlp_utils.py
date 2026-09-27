@@ -10,8 +10,16 @@ def clean_input(raw_text):
 
 
 def match_intent(cleaned_text, intent_map):
+    input_words = cleaned_text.split()
     for matched_intent, phrase_list in intent_map.items():
         for phrase in phrase_list:
+            phrase_split = phrase.split()
+            phrase_word_count = len(phrase_split)
+            if phrase_word_count == 1:
+                if phrase in input_words:
+                    
+
+
             if phrase in cleaned_text:
                 return matched_intent
 
