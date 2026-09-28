@@ -17,12 +17,10 @@ def match_intent(cleaned_text, intent_map):
             phrase_word_count = len(phrase_split)
             if phrase_word_count == 1:
                 if phrase in input_words:
-                    
-
-
-            if phrase in cleaned_text:
-                return matched_intent
-
+                    return matched_intent
+            else:
+                if phrase in cleaned_text:
+                    return matched_intent
     return None
 
 def extract_name(cleaned_text):
@@ -35,7 +33,5 @@ def extract_name(cleaned_text):
             return real_name
     return None
 
-
-
-
-
+print("see you" in "i see youtube videos")
+print(["see", "you"] in ["i", "see", "youtube", "videos"])
