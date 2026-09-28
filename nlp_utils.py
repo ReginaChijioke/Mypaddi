@@ -30,3 +30,4 @@ def extract_name(cleaned_text):
             real_name = cleaned_name.strip()
             return real_name
     return None
+
