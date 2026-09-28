@@ -5,8 +5,9 @@ from datetime import datetime
 RESPONSE_MAP = {
 
     "greetings" : ["Hello{}, how can i help you today?","Welcome{}, what are you working on today?","Hi{}, how're you feeling?"],
-    "ask_name" : ["My name is MyPaddi.", "I am an Intent_chatbot."],
+    "ask_name" : ["My name is MyPaddi."],
     "ask_time": ["The time is {}.","It's currently {}."],
+    "ask_identity" : ["I am an Intent_chatbot"],
     "joke" : ["I'm the funniest chatbot on earth.", "You don't have money in your account,now laugh about that."],
     "goodbye" : ["bye to you too", "that's okay,i'll be here if you need me.", "take care,it was nice chatting with you."]
 }
