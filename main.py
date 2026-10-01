@@ -1,3 +1,11 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+api_key = os.environ.get("GROQ_API_KEY")
+
+
 from nlp_utils import clean_input, match_intent, extract_name
 from responses import get_response, RESPONSE_MAP
 from intents import INTENT_MAP
