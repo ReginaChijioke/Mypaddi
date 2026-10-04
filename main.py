@@ -1,34 +1,29 @@
 import os
 from dotenv import load_dotenv
+from groq import Groq
 
 load_dotenv()
 
 api_key = os.environ.get("GROQ_API_KEY")
-
-
-from nlp_utils import clean_input, match_intent, extract_name
-from responses import get_response, RESPONSE_MAP
-from intents import INTENT_MAP
-
+client = Groq(api_key=api_key)
 exit_phrases = {"exit", "bye", "quit"}
-exchange_count = 0
-user_name = None 
+conversation_history = [] 
 while True:
     raw_input = input("You: ")
-    cleaned = clean_input(raw_input)
-    if cleaned in exit_phrases:
+
+    if raw_input.lower().strip() in exit_phrases:
         print("see ya")
         break
 
-    possible_name = extract_name(cleaned)
-    if possible_name is not None:
-        user_name = possible_name
-        print(f"Nice to meet you, {user_name}")
-        continue
+    conversation_history.append({"role": "user", "content": raw_input})
 
-    matched_intent = match_intent(cleaned, INTENT_MAP)
-    bot_response = get_response(matched_intent, RESPONSE_MAP, user_name)
-    print("Bot:", bot_response)
-    exchange_count += 1
-print(exchange_count)
+    chat_completion = client.chat.completions.create(
+        messages=conversation_history,
+        model="openai/gpt-oss-120b",
+    )
 
+    reply_text = chat_completion.choices[0].message.content
+
+    conversation_history.append({"role": "assistant", "content": reply_text})
+
+    print("Bot:", reply_text)
