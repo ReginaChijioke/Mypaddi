@@ -1,4 +1,12 @@
 import streamlit as st 
+st.set_page_config(page_title="MyPaddi", page_icon="💬")
+st.markdown(
+    """
+    <h1 style='text-align: center;'>MyPaddi</h1>
+    <p style='text-align: center;'>Your paddi, here to listen 🫂</p>
+    """,
+    unsafe_allow_html=True
+)
 import os
 from dotenv import load_dotenv
 from groq import Groq
