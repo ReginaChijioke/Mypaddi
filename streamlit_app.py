@@ -48,7 +48,7 @@ if prompt:
     messages=
         st.session_state["conversation_history"]
     ,
-    model="qwen/qwen3.8-27b",
+    model="openai/gpt-oss-120b",
 )
     st.session_state["conversation_history"].append({"role":"assistant","content": chat_completion.choices[0].message.content})
 
